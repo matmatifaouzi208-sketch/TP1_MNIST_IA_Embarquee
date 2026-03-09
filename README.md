@@ -8,3 +8,5 @@ Ce projet a pour objectif de résoudre le problème MNIST.
 * L'objectif est de prédire correctement la classe (le chiffre) associée à chaque image parmi les 10 classes possibles (0-9).
 * Chaque image est de taille 28x28 pixels, soit 784 pixels au total. 
 * Pour l'entraînement, chaque image [28x28] est transformée en un vecteur aplati [1x784].
+
+## 1. Choix de la Fonction d’Activation :
