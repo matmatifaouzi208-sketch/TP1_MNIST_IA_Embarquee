@@ -33,7 +33,7 @@ Voici les courbes d'apprentissage obtenues après l'entraînement de nos modèle
 | Modèle | Architecture | Paramètres en mémoire ($W$) | Accuracy (Test) à 5 epochs | Vitesse de convergence |
 | :--- | :--- | :--- | :--- | :--- |
 | **A (Softmax)** | `784 -> 10` | 7 850 | ~92.6% | Moyenne (plafonne vite) |
-| **B (ReLU)** | `784 -> 128 -> 64 -> 10` | 109 386 | **~97.5%** | **Très rapide** |
+| **B (ReLU)** | `784 -> 128 -> 64 -> 10` | 109 386 | **~97.5%** | Très rapide |
 | **C (Tanh)** | `784 -> 128 -> 64 -> 10` | 109 386 | ~97.6% | Très rapide |
 | **D (Sigmoid)** | `784 -> 128 -> 64 -> 10` | 109 386 | ~97.4% | Lente |
 
@@ -45,4 +45,3 @@ Voici les courbes d'apprentissage obtenues après l'entraînement de nos modèle
 * **ReLU (Modèle B) et Tanh (Modèle C)** : Comme le montre le graphique, ces fonctions apprennent extrêmement vite. Dès la première epoch, leur précision de validation (lignes pleines bleue et orange) dépasse les 96%. Ce sont d'excellents choix pour minimiser le nombre d'epochs nécessaires à l'entraînement.
 * **Sigmoid (Modèle D)** : La courbe rouge pleine montre une convergence beaucoup plus poussive. À la première epoch, la précision peine à dépasser 94% (et 88% en train). Cela illustre le **problème de la disparition du gradient** (vanishing gradient) : les mises à jour des poids sont si infimes que le modèle a besoin de plus de temps (plus d'epochs) pour apprendre. Bien qu'il finisse par rattraper les autres autour de la 5ème epoch, il est beaucoup moins efficace en temps de calcul.
 
-**Conclusion :** L'architecture avec couches cachées et la fonction d'activation **ReLU** (Modèle B) représente le meilleur compromis pratique moderne. Elle offre une excellente précision très rapidement, tout en évitant les problèmes de gradient de la fonction Sigmoid, justifiant ainsi le coût en mémoire de ses 109 386 synapses.
