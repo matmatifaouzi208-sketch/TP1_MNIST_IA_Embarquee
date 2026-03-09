@@ -21,7 +21,7 @@ Nous avons créé quatre versions de notre réseau d'apprentissage  :
 
 ![Comparaison des fonctions d'activation](résultat/graph.png)
 
-- Le modèle n'est pas présente sur le hraphique car il n'est pas assez précis pour le comparer à nos 3 autres modèles.
+- Le modèle A n'est pas présent sur le graphique car il n'est pas assez précis pour le comparer à nos 3 autres modèles.
 
 
 Voici un tableau pour résumer ce que nous avons observé :
@@ -30,8 +30,8 @@ Voici un tableau pour résumer ce que nous avons observé :
 | :--- | :--- | :--- | :--- |
 | **A (Softmax - Basique)** | Très léger (~7 800 paramètres) | ~92.6% | Moyenne  |
 | **B (ReLU)** | Lourd (~109 000 paramètres) | **~97.5%** | Très rapide |
-| **C (Tanh)** | Lourd (~109 000 paramètres) | ~97.6% | Très rapide |
-| **D (Sigmoid)** | Lourd (~109 000 paramètres) | ~97.4% | Lente |
+| **C (Tanh)** | Moyen (~109 000 paramètres) | ~97.6% | Très rapide |
+| **D (Sigmoid)** | Moyen (~109 000 paramètres) | ~97.4% | Lente |
 
 ---
 
