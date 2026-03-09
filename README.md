@@ -49,12 +49,12 @@ Suite à nos premières expériences, nous avons gardé notre meilleure configur
 
 ### Les 4 méthodes testées
 
-[cite_start]Nous avons mis en compétition quatre algorithmes différents, avec des stratégies distinctes[cite: 39]:
+Nous avons mis en compétition quatre algorithmes différents, avec des stratégies distinctes]:
 
-* [cite_start]**SGD (La base) :** C'est la technique classique et simple, qui donne une bonne intuition sur la descente de gradient[cite: 40].
-* [cite_start]**Adam (Le moderne) :** Une méthode très populaire aujourd'hui qui combine d'autres techniques (momentum + RMSprop) pour converger (apprendre) très vite[cite: 40].
-* [cite_start]**RMSprop (L'équilibré) :** Un algorithme qui adapte automatiquement son taux d'apprentissage pour rester stable face à des entrées variées[cite: 40].
-* [cite_start]**Adagrad (Le spécifique) :** Il donne un rythme d'apprentissage (learning rate) différent pour chaque paramètre (chaque synapse), ce qui illustre bien l'effet adaptatif[cite: 40].
+* **SGD (La base) :** C'est la technique classique et simple, qui donne une bonne intuition sur la descente de gradient.
+* **Adam (Le moderne) :** Une méthode très populaire aujourd'hui qui combine d'autres techniques (momentum + RMSprop) pour converger (apprendre) très vite.
+* **RMSprop (L'équilibré) :** Un algorithme qui adapte automatiquement son taux d'apprentissage pour rester stable face à des entrées variées.
+* **Adagrad (Le spécifique) :** Il donne un rythme d'apprentissage (learning rate) différent pour chaque paramètre.
 
 ### Les résultats après 5 lectures (Epochs)
 
