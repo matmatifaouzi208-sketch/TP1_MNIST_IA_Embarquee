@@ -70,5 +70,26 @@ L'optimiseur **Adam** confirme qu'il est le choix idéal.
 
 ## 3. Choix de la Fonction Coût
 
-![Comparaison des fonctions de coûts](résultat/graph3.png)
+## 3. Choix de la Fonction de Coût (Comment évaluer les erreurs)
+
+Le choix de la fonction de coût dépend directement du type de problème que l'on traite et de la sortie produite par le modèle[cite: 42]. C'est l'outil mathématique qui calcule la marge d'erreur de la machine pour qu'elle sache comment s'améliorer.
+
+### Les différentes fonctions selon le problème
+
+Voici un tableau théorique simplifié pour savoir quelle fonction utiliser en fonction de la situation:
+
+| Type de Problème | Ce que la machine produit (Sortie) | La meilleure fonction coût à utiliser |
+| :--- | :--- | :--- |
+| **Binaire** (ex. spam / non spam) | Une probabilité entre 0 et 1 | `binary_crossentropy`  |
+| **Multi-Classes** (ex. chien/chat/lapin) | Un vecteur avec la probabilité pour chaque classe | `categorical_crossentropy` (à utiliser si les labels sont encodés en "one-hot", ex: 0,0,1,0...)  |
+| **Multi-Classes** (Un seul label à la fois) | Des scores bruts (Logits) | `sparse_categorical_crossentropy` (à utiliser si les labels sont de simples entiers, ex: 0, 1, 2...)  |
+
+
+![Comparaison des Fonctions de Coût](résultat/graph3.png)
+
+Comme vous pouvez le voir sur ce graphique, les deux courbes suivent exactement la même trajectoire et atteignent toutes les deux un excellent score d'environ 97,5 % de précision. C'est tout à fait logique : `categorical_crossentropy` et `sparse_categorical_crossentropy` effectuent exactement le même calcul mathématique en arrière-plan pour évaluer l'erreur.
+
+La vraie différence est purement pratique pour l'optimisation de notre programme. Pour notre problème MNIST, les réponses attendues (les labels) sont simplement les chiffres de 0 à 9. Utiliser la fonction `sparse_categorical_crossentropy` est donc l'approche la plus intelligente. Elle nous permet de donner directement le numéro de la bonne réponse à la machine sous forme de nombre entier , plutôt que de devoir le transformer artificiellement en un grand vecteur de 10 cases rempli de zéros avec un seul "1" (l'encodage "one-hot"). 
+
+Les performances sont identiques, mais `sparse_categorical_crossentropy` simplifie grandement notre code et la gestion de notre mémoire !
 
