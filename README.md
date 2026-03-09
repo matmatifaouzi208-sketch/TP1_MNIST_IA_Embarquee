@@ -43,16 +43,16 @@ Sanchant que `Tanh` est plus léger avec 2 couches tout en restant très rapide 
 
 ## 2. Choix de l’Algorithme d’Optimisation
 
-Suite à nos premières expériences, nous avons gardé notre meilleure configuration : le réseau avec des couches intermédiaires et la méthode d'activation **ReLU**[cite: 31, 39]. 
+Suite à nos premières expériences, nous avons gardé notre meilleure configuration.
 
-[cite_start]Notre but est maintenant de choisir le meilleur algorithme d'optimisation[cite: 38]. C'est en quelque sorte la méthode mathématique utilisée pour corriger les erreurs de la machine après chaque lecture des données pour qu'elle s'améliore.
+Notre but est maintenant de choisir le meilleur algorithme d'optimisation. C'est en quelque sorte la méthode mathématique utilisée pour corriger les erreurs de la machine après chaque lecture des données pour qu'elle s'améliore.
 
 ### Les 4 méthodes testées
 
-Nous avons mis en compétition quatre algorithmes différents, avec des stratégies distinctes]:
+Nous avons mis en compétition quatre algorithmes différents, avec des stratégies distinctes:
 
 * **SGD (La base) :** C'est la technique classique et simple, qui donne une bonne intuition sur la descente de gradient.
-* **Adam (Le moderne) :** Une méthode très populaire aujourd'hui qui combine d'autres techniques (momentum + RMSprop) pour converger (apprendre) très vite.
+* **Adam (Le moderne) :** Une méthode très populaire aujourd'hui qui combine d'autres techniques pour converger (apprendre) très vite.
 * **RMSprop (L'équilibré) :** Un algorithme qui adapte automatiquement son taux d'apprentissage pour rester stable face à des entrées variées.
 * **Adagrad (Le spécifique) :** Il donne un rythme d'apprentissage (learning rate) différent pour chaque paramètre.
 
