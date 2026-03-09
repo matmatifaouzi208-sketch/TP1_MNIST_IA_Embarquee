@@ -68,3 +68,7 @@ Nous avons mis en compétition quatre algorithmes différents, avec des stratég
 
 L'optimiseur **Adam** confirme qu'il est le choix idéal.
 
+## 3. Choix de la Fonction Coût
+
+![Comparaison des fonctions de coûts](résultat/graph3.png)
+
