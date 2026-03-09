@@ -12,10 +12,10 @@ Dans cette première partie, notre but est de comprendre comment la "forme" de n
 
 Nous avons créé quatre versions de notre réseau d'apprentissage  :
 
-* **a. Modèle A (Le plus basique) :** C'est un réseau direct, sans étape intermédiaire de réflexion (sans "couche cachée").L'image entre d'un côté et le résultat sort de l'autre avec la fonction "Softmax". C'est une approche très simple et très légère.
-* **b. Modèle B (Le moderne avec ReLU) :** C'est un réseau plus profond. On lui a ajouté deux étapes intermédiaires de calcul (des couches cachées) et on utilise la fonction "ReLU" pour l'aider à apprendre.
-* **c. Modèle C (Le classique avec Tanh) :** C'est exactement la même construction que le Modèle B, mais on utilise une méthode mathématique différente appelée "Tanh".
-* **d. Modèle D (L'ancien avec Sigmoid) :** Toujours la même construction, mais avec une méthode plus ancienne appelée "Sigmoid".
+* **a. Modèle A (Le plus basique) :** C'est un réseau direct, sans étape intermédiaire de réflexion (sans "couche cachée"). L'image entre d'un côté et le résultat sort de l'autre avec la fonction "Softmax". C'est une approche très simple et très légère.
+* **b. Modèle B (ReLU) :** C'est un réseau plus profond. On lui a ajouté deux étapes intermédiaires de calcul (des couches cachées) et on utilise la fonction "ReLU" pour l'aider à apprendre.
+* **c. Modèle C (Tanh) :** C'est exactement la même construction que le Modèle B, mais on utilise une méthode mathématique différente appelée "Tanh".
+* **d. Modèle D (Sigmoid) :** Toujours la même construction, mais avec une méthode plus ancienne appelée "Sigmoid".
 
 ### Les résultats après 5 lectures des données (5 Epochs)
 
