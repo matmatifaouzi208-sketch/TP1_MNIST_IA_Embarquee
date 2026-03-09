@@ -89,5 +89,5 @@ Sur le graphique nous pouvons voir que les deux courbes suivent exactement la m�
 
 La vraie différence est purement pratique pour l'optimisation de notre programme. Pour notre problème MNIST, les réponses attendues sont simplement les chiffres de 0 à 9. Utiliser la fonction `sparse_categorical_crossentropy` est donc l'approche la plus intelligente. Elle nous permet de donner directement le numéro de la bonne réponse à la machine sous forme de nombre entier , plutôt que de devoir le transformer artificiellement en un grand vecteur de 10 cases rempli de zéros avec un seul "1". 
 
-Les performances sont identiques, mais `sparse_categorical_crossentropy` simplifie grandement notre code et la gestion de notre mémoire !
+Nous décidons donc d'utiliser la fonction de coût `sparse_categorical_crossentropy` pour son optimisation pour les types de sortie "entiers". 
 
