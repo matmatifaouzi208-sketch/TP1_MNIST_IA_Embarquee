@@ -4,10 +4,6 @@
 
 Ce projet a pour objectif de résoudre le problème MNIST. Le jeu de données MNIST est un benchmark classique en apprentissage automatique pour la classification d'images , qui contient des images en niveaux de gris de chiffres manuscrits (de 0 à 9).  L'objectif de ce modèle est de prédire correctement la classe (le chiffre) associée à chaque image parmi les 10 classes possibles. Sachant que chaque image est de taille 28/28 pixels, soit [1x784] pixels au total , celle-ci est systématiquement transformée en un vecteur aplati de dimension 784 pour la phase d'entraînement.
 
-## 1. Choix de la Fonction d’Activation :
-
-Pour cette étude, nous avons évalué 4 architectures différentes pendant 5 epochs en utilisant l'optimiseur Adam.
-
 ## 1. Choix de la Fonction d'Activation
 
 Pour cette première partie d'étude, nous utilisons l'optimiseur `adam` et la fonction de coût `categorical_crossentropy`. L'objectif est d'observer l'impact de la présence de couches cachées et du choix de la fonction d'activation sur les performances de notre réseau.
