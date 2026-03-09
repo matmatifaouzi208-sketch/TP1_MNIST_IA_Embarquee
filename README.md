@@ -6,4 +6,4 @@ Ce projet a pour objectif de résoudre le problème MNIST. Le jeu de données MN
 
 ## 1. Choix de la Fonction d’Activation :
 
-Pour cette étude, nous avons évalué 4 architectures différentes pendant 5 epochs.
+Pour cette étude, nous avons évalué 4 architectures différentes pendant 5 epochs en utilisant l'optimiseur Adam.
