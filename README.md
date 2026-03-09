@@ -21,6 +21,8 @@ Nous avons créé quatre versions de notre réseau d'apprentissage  :
 
 ![Comparaison des fonctions d'activation](résultat/graph.png)
 
+- Le modèle n'est pas présente sur le hraphique car il n'est pas assez précis pour le comparer à nos 3 autres modèles.
+
 
 Voici un tableau pour résumer ce que nous avons observé :
 
