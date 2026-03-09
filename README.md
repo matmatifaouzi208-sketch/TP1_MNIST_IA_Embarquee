@@ -4,39 +4,46 @@
 
 Ce projet a pour objectif de résoudre le problème MNIST. Le jeu de données MNIST est un benchmark classique en apprentissage automatique pour la classification d'images , qui contient des images en niveaux de gris de chiffres manuscrits (de 0 à 9).  L'objectif de ce modèle est de prédire correctement la classe (le chiffre) associée à chaque image parmi les 10 classes possibles. Sachant que chaque image est de taille 28/28 pixels, soit [1x784] pixels au total , celle-ci est systématiquement transformée en un vecteur aplati de dimension 784 pour la phase d'entraînement.
 
-## 1. Choix de la Fonction d'Activation
+## 1. Choix de la Méthode d'Apprentissage (Fonction d'Activation)
 
-Pour cette première partie d'étude, nous utilisons l'optimiseur `adam` et la fonction de coût `categorical_crossentropy`. L'objectif est d'observer l'impact de la présence de couches cachées et du choix de la fonction d'activation sur les performances de notre réseau.
+Dans cette première partie, notre but est de comprendre comment la "forme" de notre intelligence artificielle (ses couches) et sa méthode d'activation influencent ses résultats. [cite_start]Pour que le test soit juste, nous gardons la même base de calcul pour tout le monde : l'optimiseur `adam` et la fonction d'erreur `categorical_crossentropy`[cite: 29].
 
-### Implémentations réalisées (a, b, c, d)
+### Les 4 modèles testés
 
-Nous avons codé quatre architectures différentes à l'aide de Keras :
+Nous avons créé quatre versions de notre réseau d'apprentissage  :
 
-* **a. Modèle A (Softmax direct) :** Un réseau sans couche cachée, reliant directement l'entrée (784) à la sortie (10) avec une activation `softmax`. C'est un simple modèle linéaire.
-* **b. Modèle B (ReLU) :** Un perceptron multicouche (MLP) avec 2 couches cachées (128 et 64 neurones) utilisant la fonction d'activation `relu`.
-* **c. Modèle C (Tanh) :** La même architecture (128 -> 64 neurones), mais utilisant la fonction d'activation `tanh`.
-* **d. Modèle D (Sigmoid) :** La même architecture (128 -> 64 neurones), mais utilisant la fonction d'activation `sigmoid`.
+* **a. Modèle A (Le plus basique) :** C'est un réseau direct, sans étape intermédiaire de réflexion (sans "couche cachée"). [cite_start]L'image entre d'un côté et le résultat sort de l'autre avec la fonction "Softmax"[cite: 30]. C'est une approche très simple et très légère.
+* **b. Modèle B (Le moderne avec ReLU) :** C'est un réseau plus profond. [cite_start]On lui a ajouté deux étapes intermédiaires de calcul (des couches cachées) et on utilise la fonction "ReLU" pour l'aider à apprendre[cite: 31].
+* **c. [cite_start]Modèle C (Le classique avec Tanh) :** C'est exactement la même construction que le Modèle B, mais on utilise une méthode mathématique différente appelée "Tanh"[cite: 33].
+* **d. [cite_start]Modèle D (L'ancien avec Sigmoid) :** Toujours la même construction, mais avec une méthode plus ancienne appelée "Sigmoid"[cite: 34].
 
-### e. Comparaisons et Justification des Compromis
+### Les résultats après 5 lectures des données (5 Epochs)
 
-Voici les courbes d'apprentissage obtenues après l'entraînement de nos modèles sur 5 epochs :
+![Comparaison des fonctions d'activation](réulstat/image_0514e3.png)
+*(Note : Le Modèle A n'apparaît pas sur ce graphique pour qu'il reste facile à lire, mais ses résultats sont discutés en dessous).*
 
-![Comparaison des fonctions d'activation](résultat/graph.png)
+Voici un tableau très simple pour résumer ce que nous avons observé :
 
-#### Analyse des Compromis : Accuracy, Epochs et Synapses
+| Modèle testé | Complexité (Taille en mémoire) | Taux de bonnes réponses | Vitesse d'apprentissage |
+| :--- | :--- | :--- | :--- |
+| **A (Softmax - Basique)** | Très léger (~7 800 paramètres) | ~92.6% | Moyenne (le score bloque vite) |
+| **B (ReLU)** | Lourd (~109 000 paramètres) | **~97.5%** | **Très rapide** |
+| **C (Tanh)** | Lourd (~109 000 paramètres) | ~97.6% | Très rapide |
+| **D (Sigmoid)** | Lourd (~109 000 paramètres) | ~97.4% | Lente (il a besoin de plus de temps) |
 
-| Modèle | Architecture | Paramètres en mémoire ($W$) | Accuracy (Test) à 5 epochs | Vitesse de convergence |
-| :--- | :--- | :--- | :--- | :--- |
-| **A (Softmax)** | `784 -> 10` | 7 850 | ~92.6% | Moyenne (plafonne vite) |
-| **B (ReLU)** | `784 -> 128 -> 64 -> 10` | 109 386 | **~97.5%** | Très rapide |
-| **C (Tanh)** | `784 -> 128 -> 64 -> 10` | 109 386 | ~97.6% | Très rapide |
-| **D (Sigmoid)** | `784 -> 128 -> 64 -> 10` | 109 386 | ~97.4% | Lente |
+---
 
-**1. Compromis "Nombre de Synapses (Dimension de $W$)" vs "Accuracy" :**
-* Le **Modèle A** possède un très faible nombre de paramètres de poids et biais ($784 \times 10 + 10 = 7850$). Son empreinte mémoire est minime et son exécution ultra-rapide. Cependant, sans couche cachée, il ne trace que des frontières de décision linéaires. Son *accuracy* plafonne rapidement autour de 92.6%.
-* Les **Modèles B, C et D** ajoutent des couches cachées, ce qui fait exploser le nombre de synapses stockées en mémoire ($100480 + 8256 + 650 = 109386$ paramètres). L'empreinte mémoire est multipliée par 14. En contrepartie, cette complexité permet au réseau de modéliser des relations non linéaires, propulsant l'*accuracy* au-delà de 97%. Le compromis est donc clair : on sacrifie de la mémoire et de la puissance de calcul pour gagner 5 points de précision cruciaux.
+### Explication des compromis : Mémoire, Temps et Précision
 
-**2. Compromis "Nombre d'Epochs" vs "Fonction d'Activation" :**
-* **ReLU (Modèle B) et Tanh (Modèle C)** : Comme le montre le graphique, ces fonctions apprennent extrêmement vite. Dès la première epoch, leur précision de validation (lignes pleines bleue et orange) dépasse les 96%. Ce sont d'excellents choix pour minimiser le nombre d'epochs nécessaires à l'entraînement.
-* **Sigmoid (Modèle D)** : La courbe rouge pleine montre une convergence beaucoup plus poussive. À la première epoch, la précision peine à dépasser 94% (et 88% en train). Cela illustre le **problème de la disparition du gradient** (vanishing gradient) : les mises à jour des poids sont si infimes que le modèle a besoin de plus de temps (plus d'epochs) pour apprendre. Bien qu'il finisse par rattraper les autres autour de la 5ème epoch, il est beaucoup moins efficace en temps de calcul.
+[cite_start]Pour bien juger une intelligence artificielle, il faut trouver le bon équilibre (le compromis) entre trois choses : la place qu'elle prend en mémoire sur l'ordinateur, le temps qu'elle met à apprendre (le nombre d'epochs) et son taux de réussite (la précision)[cite: 37].
 
+**1. Le combat "Taille en Mémoire" contre "Précision"**
+Le Modèle A prend très peu de place sur l'ordinateur. C'est génial, mais comme il est trop simple, il n'est pas capable de comprendre des images trop complexes. Son score de bonnes réponses bloque très vite à 92.6%.
+Pour les Modèles B, C et D, nous avons ajouté des étapes de calcul supplémentaires. Conséquence : le réseau devient 14 fois plus gros en mémoire ! Par contre, ce sacrifice est largement récompensé. La machine devient beaucoup plus fine dans ses analyses et dépasse les 97% de bonnes réponses. [cite_start]On accepte donc de consommer plus de mémoire pour gagner en précision[cite: 37].
+
+**2. Le combat "Temps d'apprentissage" contre "Méthode de calcul"**
+[cite_start]La méthode choisie (ReLU, Tanh ou Sigmoid) change complètement la vitesse à laquelle l'intelligence mémorise les informations[cite: 37].
+Avec les fonctions ReLU (Modèle B) et Tanh (Modèle C), l'apprentissage est un sprint. Dès qu'elles ont lu les images une seule fois (la première epoch), elles dépassent déjà les 96% de réussite. C'est parfait si on veut gagner du temps.
+À l'inverse, avec la fonction Sigmoid (Modèle D), le réseau a beaucoup de mal au début (c'est un souci mathématique connu appelé la "disparition du gradient"). Il a besoin de réviser les images beaucoup plus de fois (plus d'epochs) pour finir par atteindre le niveau des autres. [cite_start]Ce n'est donc pas très efficace en temps de calcul[cite: 37].
+
+**En conclusion :** Le Modèle B avec la fonction **ReLU** est le grand gagnant. [cite_start]Il est ultra-rapide pour apprendre et offre d'excellents résultats, ce qui justifie totalement le fait qu'il prenne un peu plus de place en mémoire sur l'ordinateur[cite: 37].
