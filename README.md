@@ -22,7 +22,6 @@ Nous avons codé quatre architectures différentes à l'aide de Keras :
 Voici les courbes d'apprentissage obtenues après l'entraînement de nos modèles sur 5 epochs :
 
 ![Comparaison des fonctions d'activation](résultat/graph.png)
-*(Note : Le Modèle A n'est pas affiché sur le graphe pour des raisons de lisibilité, mais ses résultats sont inclus dans l'analyse ci-dessous).*
 
 #### Analyse des Compromis : Accuracy, Epochs et Synapses
 
