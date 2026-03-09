@@ -37,7 +37,11 @@ Voici un tableau pour résumer ce que nous avons observé :
 
 L'évaluation d'une intelligence artificielle repose sur un compromis essentiel entre sa taille en mémoire, son temps d'apprentissage (les epochs) et sa précision finale. Bien que le Modèle A soit très léger en mémoire, sa simplicité limite sa précision à 92,6 %, là où les modèles B, C et D exigent 14 fois plus d'espace mais dépassent les 97 % de réussite.
 
+Sanchant que `Tanh` est plus léger avec 2 couches tout en restant très rapide et précis c'est ici la meilleur option à opter pour choisir notre fonction d'activation.
+
 
 
 ## 2. Choix de l’Algorithme d’Optimisation
+
+
 
