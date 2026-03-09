@@ -43,5 +43,28 @@ Sanchant que `Tanh` est plus léger avec 2 couches tout en restant très rapide 
 
 ## 2. Choix de l’Algorithme d’Optimisation
 
+Suite à nos premières expériences, nous avons gardé notre meilleure configuration : le réseau avec des couches intermédiaires et la méthode d'activation **ReLU**[cite: 31, 39]. 
 
+[cite_start]Notre but est maintenant de choisir le meilleur algorithme d'optimisation[cite: 38]. C'est en quelque sorte la méthode mathématique utilisée pour corriger les erreurs de la machine après chaque lecture des données pour qu'elle s'améliore.
+
+### Les 4 méthodes testées
+
+[cite_start]Nous avons mis en compétition quatre algorithmes différents, avec des stratégies distinctes[cite: 39]:
+
+* [cite_start]**SGD (La base) :** C'est la technique classique et simple, qui donne une bonne intuition sur la descente de gradient[cite: 40].
+* [cite_start]**Adam (Le moderne) :** Une méthode très populaire aujourd'hui qui combine d'autres techniques (momentum + RMSprop) pour converger (apprendre) très vite[cite: 40].
+* [cite_start]**RMSprop (L'équilibré) :** Un algorithme qui adapte automatiquement son taux d'apprentissage pour rester stable face à des entrées variées[cite: 40].
+* [cite_start]**Adagrad (Le spécifique) :** Il donne un rythme d'apprentissage (learning rate) différent pour chaque paramètre (chaque synapse), ce qui illustre bien l'effet adaptatif[cite: 40].
+
+### Les résultats après 5 lectures (Epochs)
+
+![Comparaison des Optimiseurs](résultat/graph2.png)
+
+**Analyse des performances vues sur le graphique :**
+
+1.  **Adam (Orange) et RMSprop (Vert) :** Ces deux algorithmes dominent largement. Dès la toute première lecture, ils propulsent la machine à plus de 96% de bonnes réponses, pour finir en frôlant les 98%. Ils sont capables de trouver les bons réglages de manière presque instantanée.
+2.  **SGD (Bleu) :** Sa progression est très régulière et forme une belle ligne qui monte doucement. Il commence plus bas (environ 91%) et finit à 95%. Il est fiable, mais il a besoin de beaucoup plus de temps et de lectures (plus d'epochs) pour espérer atteindre le niveau d'Adam.
+3.  **Adagrad (Rouge) :** Sur notre test, c'est lui qui a le plus de mal à démarrer (sous les 85%). Même s'il progresse de façon constante, il finit bon dernier autour de 91%. Son rythme d'apprentissage s'est probablement réduit un peu trop vite, l'empêchant de rattraper les autres.
+
+L'optimiseur **Adam** confirme qu'il est le choix idéal.
 
