@@ -33,8 +33,6 @@ Voici un tableau pour résumer ce que nous avons observé :
 
 ---
 
-### Explication des compromis : Mémoire, Temps et Précision
-
 L'évaluation d'une intelligence artificielle repose sur un compromis essentiel entre sa taille en mémoire, son temps d'apprentissage (les epochs) et sa précision finale. Bien que le Modèle A soit très léger en mémoire, sa simplicité limite sa précision à 92,6 %, là où les modèles B, C et D exigent 14 fois plus d'espace mais dépassent les 97 % de réussite.
 
 ## 2. Choix de l’Algorithme d’Optimisation
